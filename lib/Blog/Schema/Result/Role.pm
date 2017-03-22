@@ -24,11 +24,15 @@ extends 'DBIx::Class::Core';
 
 =item * L<DBIx::Class::InflateColumn::DateTime>
 
+=item * L<DBIx::Class::TimeStamp>
+
+=item * L<DBIx::Class::PassphraseColumn>
+
 =back
 
 =cut
 
-__PACKAGE__->load_components("InflateColumn::DateTime");
+__PACKAGE__->load_components("InflateColumn::DateTime", "TimeStamp", "PassphraseColumn");
 
 =head1 TABLE: C<roles>
 
@@ -70,26 +74,26 @@ __PACKAGE__->add_columns(
 
 __PACKAGE__->set_primary_key("id");
 
+
+# Created by DBIx::Class::Schema::Loader v0.07046 @ 2017-03-18 18:02:54
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:WU058iZfIaeKe0MjzZ23kw
+
 =head1 RELATIONS
 
-=head2 users
+=head2 user_roles
 
 Type: has_many
 
-Related object: L<Blog::Schema::Result::User>
+Related object: L<MyApp::Schema::Result::UserRole>
 
 =cut
 
 __PACKAGE__->has_many(
-  "users",
-  "Blog::Schema::Result::User",
-  { "foreign.role" => "self.id" },
-  { cascade_copy => 0, cascade_delete => 0 },
+    "user_roles",
+    "Blog::Schema::Result::UserRole",
+    { "foreign.role_id" => "self.id" },
+    { cascade_copy => 0, cascade_delete => 0 },
 );
-
-
-# Created by DBIx::Class::Schema::Loader v0.07046 @ 2017-03-17 15:38:48
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:995EAtQ0gurjoBOp0U4Thw
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

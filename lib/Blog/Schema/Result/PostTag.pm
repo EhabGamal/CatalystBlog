@@ -24,11 +24,15 @@ extends 'DBIx::Class::Core';
 
 =item * L<DBIx::Class::InflateColumn::DateTime>
 
+=item * L<DBIx::Class::TimeStamp>
+
+=item * L<DBIx::Class::PassphraseColumn>
+
 =back
 
 =cut
 
-__PACKAGE__->load_components("InflateColumn::DateTime");
+__PACKAGE__->load_components("InflateColumn::DateTime", "TimeStamp", "PassphraseColumn");
 
 =head1 TABLE: C<post_tags>
 
@@ -104,8 +108,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07046 @ 2017-03-17 15:38:48
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:ajpHCyBh9u+HWLRjIl1bow
+# Created by DBIx::Class::Schema::Loader v0.07046 @ 2017-03-18 18:02:54
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:aOw5MZrAbIEx4jlldj8NxQ
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

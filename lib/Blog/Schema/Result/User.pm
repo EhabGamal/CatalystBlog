@@ -24,11 +24,15 @@ extends 'DBIx::Class::Core';
 
 =item * L<DBIx::Class::InflateColumn::DateTime>
 
+=item * L<DBIx::Class::TimeStamp>
+
+=item * L<DBIx::Class::PassphraseColumn>
+
 =back
 
 =cut
 
-__PACKAGE__->load_components("InflateColumn::DateTime");
+__PACKAGE__->load_components("InflateColumn::DateTime", "TimeStamp", "PassphraseColumn");
 
 =head1 TABLE: C<users>
 
@@ -93,12 +97,6 @@ __PACKAGE__->table("users");
   is_nullable: 1
   size: 100
 
-=head2 role
-
-  data_type: 'integer'
-  is_foreign_key: 1
-  is_nullable: 0
-
 =head2 regdate
 
   data_type: 'datetime'
@@ -131,8 +129,6 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_nullable => 1, size => 300 },
   "avatar",
   { data_type => "varchar", is_nullable => 1, size => 100 },
-  "role",
-  { data_type => "integer", is_foreign_key => 1, is_nullable => 0 },
   "regdate",
   {
     data_type => "datetime",
@@ -193,44 +189,78 @@ __PACKAGE__->has_many(
   "comments",
   "Blog::Schema::Result::Comment",
   { "foreign.userid" => "self.id" },
-  { cascade_copy => 0, cascade_delete => 0 },
+  { cascade_copy => 0, cascade_delete => 1 },
 );
 
-=head2 posts
+__PACKAGE__->has_many(
+    "posts",
+    "Blog::Schema::Result::Post",
+    { "foreign.userid" => "self.id" },
+    { cascade_copy => 0, cascade_delete => 1 },
+);
+
+=head1 RELATIONS
+
+=head2 user_roles
 
 Type: has_many
 
-Related object: L<Blog::Schema::Result::Post>
+Related object: L<MyApp::Schema::Result::UserRole>
 
 =cut
 
 __PACKAGE__->has_many(
-  "posts",
-  "Blog::Schema::Result::Post",
-  { "foreign.userid" => "self.id" },
-  { cascade_copy => 0, cascade_delete => 0 },
+    "user_roles",
+    "Blog::Schema::Result::UserRole",
+    { "foreign.user_id" => "self.id" },
+    { cascade_copy => 0, cascade_delete => 0 },
 );
 
-=head2 role
+# Created by DBIx::Class::Schema::Loader v0.07046 @ 2017-03-18 18:02:54
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:NQH/p/yMCdFQj6OusV7jHg
 
-Type: belongs_to
+# many_to_many():
+#   args:
+#     1) Name of relationship, DBIC will create accessor with this name
+#     2) Name of has_many() relationship this many_to_many() is shortcut for
+#     3) Name of belongs_to() relationship in model class of has_many() above
+#   You must already have the has_many() defined to use a many_to_many().
+__PACKAGE__->many_to_many(roles => 'user_roles', 'role');
 
-Related object: L<Blog::Schema::Result::Role>
+# Have the 'password' column use a SHA-1 hash and 20-byte salt
+# with RFC 2307 encoding; Generate the 'check_password" method
+__PACKAGE__->add_columns(
+    'password' => {
+        passphrase       => 'rfc2307',
+        passphrase_class => 'SaltedDigest',
+        passphrase_args  => {
+            algorithm   => 'SHA-1',
+            salt_random => 20.
+        },
+        passphrase_check_method => 'check_password',
+    },
+);
+
+sub delete_allowed_by {
+    my ($self, $user) = @_;
+
+    # Only allow delete if user has 'admin' role
+    return $user->has_role('admin');
+}
+
+=head2 has_role
+
+Check if a user has the specified role
 
 =cut
 
-__PACKAGE__->belongs_to(
-  "role",
-  "Blog::Schema::Result::Role",
-  { id => "role" },
-  { is_deferrable => 1, on_delete => "RESTRICT", on_update => "RESTRICT" },
-);
+use Perl6::Junction qw/any/;
+sub has_role {
+    my ($self, $role) = @_;
 
+    # Does this user posses the required role?
+    return any(map { $_->role } $self->roles) eq $role;
+}
 
-# Created by DBIx::Class::Schema::Loader v0.07046 @ 2017-03-17 15:38:48
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:hQDHcFEeuN9Zj9bJDMQG0Q
-
-
-# You can replace this text with custom code or comments, and it will be preserved on regeneration
 __PACKAGE__->meta->make_immutable;
 1;

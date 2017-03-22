@@ -24,11 +24,15 @@ extends 'DBIx::Class::Core';
 
 =item * L<DBIx::Class::InflateColumn::DateTime>
 
+=item * L<DBIx::Class::TimeStamp>
+
+=item * L<DBIx::Class::PassphraseColumn>
+
 =back
 
 =cut
 
-__PACKAGE__->load_components("InflateColumn::DateTime");
+__PACKAGE__->load_components("InflateColumn::DateTime", "TimeStamp", "PassphraseColumn");
 
 =head1 TABLE: C<posts>
 
@@ -151,7 +155,7 @@ __PACKAGE__->has_many(
   "post_tags",
   "Blog::Schema::Result::PostTag",
   { "foreign.postid" => "self.id" },
-  { cascade_copy => 0, cascade_delete => 0 },
+  { cascade_copy => 0, cascade_delete => 1 },
 );
 
 =head2 userid
@@ -163,16 +167,28 @@ Related object: L<Blog::Schema::Result::User>
 =cut
 
 __PACKAGE__->belongs_to(
-  "userid",
+  "user",
   "Blog::Schema::Result::User",
   { id => "userid" },
-  { is_deferrable => 1, on_delete => "RESTRICT", on_update => "RESTRICT" },
+  { is_deferrable => 1, on_delete => "CASCADE", on_update => "CASCADE" },
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07046 @ 2017-03-17 15:38:48
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:l+K+/GFKcd9H/czSbyEBUA
+# Created by DBIx::Class::Schema::Loader v0.07046 @ 2017-03-18 18:02:54
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:GfsjW2nqj6XcohOf/cVIaA
 
+=head2 delete_allowed_by
+
+Can the specified user delete the current book?
+
+=cut
+
+sub delete_allowed_by {
+  my ($self, $user) = @_;
+
+  # Only allow delete if user has 'admin' role
+  return $user->has_role('admin');
+}
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 __PACKAGE__->meta->make_immutable;
