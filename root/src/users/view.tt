@@ -1,0 +1,60 @@
+[% META title = 'User' -%]
+
+<div class="row">
+    <div class="card hoverable">
+        <div class="card-content">
+            <div class="row">
+                <div class="col m3 s6 offset-s3">
+                    <img src="[% c.uri_for('/static/images/person0.png') %]" alt="" class="responsive-img circle">
+                </div>
+                <div class="col m5 s12">
+                    <h2>[% user.username %]</h2>
+                    <p>Full Name: [% user.fname;' '; user.lname %]</p>
+                    <p>Email: [% user.email %]</p>
+                    <p>Gender: [% user.gender %]</p>
+                    <p>
+                        [% FOREACH post IN user.posts -%]
+                            [%# post.title; loop.count %]
+                        [% END; %]
+                    </p>
+                </div>
+                <div class="col m2 s6 center-align red-text">
+                    <h1>[% posts %]</h1>
+                    <h1><i class="material-icons" style="font-size: 1em">rate_review</i></h1>
+                </div>
+                <div class="col m2 s6 center-align red-text">
+                    <h1>[% comments %]</h1>
+                    <h1><i class="material-icons" style="font-size: 1em">comment</i></h1>
+                </div>
+                [% IF(c.user.has_role('admin') || c.user.id == user.id) %]
+                    <div class="fixed-action-btn horizontal action-btn">
+                        <a class="btn-floating btn-flat">
+                            <i class="large material-icons red-text">settings</i>
+                        </a>
+                        <ul>
+                            [% IF c.user.has_role('admin') %]
+                                <li><a href="[% c.uri_for(c.controller.action_for('delete'), [user.id]) %]" class="btn-floating red"><i class="material-icons">delete_forever</i></a></li>
+                            [% END; %]
+                            <li><a href="[% c.uri_for(c.controller.action_for('edit'), [user.id]) %]" class="btn-floating blue"><i class="material-icons">edit</i></a></li>
+                        </ul>
+                    </div>
+                [% END; %]
+            </div>
+            <ul class="collection row">
+                [% FOREACH post IN user.posts -%]
+                    <li class="collection-item">
+                        <a href="[% c.uri_for(c.controller('posts').action_for('view'), [post.id]) %]">[% post.title %]</a>
+                        [% IF (c.user.has_role('admin') || post.user.id == c.user.id) %]
+                            <a href="[% c.uri_for(c.controller('posts').action_for('delete'), [post.id]) %]" class="secondary-content" >
+                                <i class="material-icons red-text">delete_forever</i>
+                            </a>
+                            <a href="[% c.uri_for(c.controller('posts').action_for('edit'), [post.id]) %]" class="secondary-content" >
+                                <i class="material-icons">edit</i>
+                            </a>
+                        [% END; %]
+                    </li>
+                [% END; %]
+            </ul>
+        </div>
+    </div>
+</div>

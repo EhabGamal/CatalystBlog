@@ -1,0 +1,72 @@
+[% # This is a TT comment. -%]
+
+[%- # Provide a title -%]
+[% META title = 'Post' -%]
+
+[% # Note That the '-' at the beginning or end of TT code  -%]
+[% # "chomps" the whitespace/newline at that end of the    -%]
+[% # output (use View Source in browser to see the effect) -%]
+
+[% # Some basic HTML with a loop to display books -%]
+[% # Display each book in a table row %]
+<div class="row">
+    <div class="col s12">
+        <div class="card hoverable">
+            <div class="card-content">
+                <div class="row">
+                    <div class="col">
+                        <img src="[% c.uri_for('/static/images/') %][% post.user.avatar %]" alt="" class="circle" height="100px">
+                    </div>
+                    <div class="col">
+                        <h4><a href="[% c.uri_for(c.controller('users').action_for('view'), [post.user.id]) %]">[% post.user.username %]</a></h4><br>
+                        <a href="[% c.uri_for(c.controller.action_for('view'), [post.id]) %]">[% post.edit %]</a>
+                    </div>
+                </div>
+                <span class="card-title">[% post.title %]</span>
+                <p>[% post.content %]</p>
+                [% IF (c.user.has_role('admin') || post.user.id == c.user.id) %]
+                <div class="fixed-action-btn horizontal action-btn">
+                    <a class="btn-floating btn-flat">
+                        <i class="large material-icons red-text">settings</i>
+                    </a>
+                    <ul>
+                        <li><a href="[% c.uri_for(c.controller.action_for('delete'), [post.id]) %]" class="btn-floating red"><i class="material-icons">delete_forever</i></a></li>
+                        <li><a href="[% c.uri_for(c.controller.action_for('edit'), [post.id]) %]" class="btn-floating blue"><i class="material-icons">edit</i></a></li>
+                    </ul>
+                </div>
+                [% END; %]
+                <form action="[% c.uri_for(c.controller('comments').action_for('save')) %]" method="POST" class="card-action">
+                    <input type="hidden" name="postid" value="[% post.id %]">
+                    <div class="input-field">
+                        <input name="comment" type="text" required>
+                        <label for="post-title">Comment</label>
+                    </div>
+                    <button type="submit" class="action-btn btn-floating btn-flat"><i class="material-icons blue-text">send</i></button>
+                </form>
+                <ul class="collection">
+                    [% FOREACH comment IN post.comments -%]
+                        <li class="collection-item avatar">
+                            <img src="[% c.uri_for('/static/images/person0.png') %]" alt="" class="circle">
+                            <span class="title">
+                                <a href="[% c.uri_for(c.controller('users').action_for('view'), [comment.userid.id]) %]">[% comment.userid.username %]</a>
+                                <span class="red-text">[% comment.comment_date %]</span>
+                            </span>
+                            <p>[% comment.comment %]</p>
+                            [% IF (c.user.has_role('admin') || comment.userid.id == c.user.id) %]
+                            <div class="fixed-action-btn horizontal action-btn">
+                                <a class="btn-floating btn-flat">
+                                    <i class="large material-icons red-text">more_vert</i>
+                                </a>
+                                <ul>
+                                    <li><a href="[% c.uri_for(c.controller('comments').action_for('delete'), [comment.id]) %]" class="btn-floating red"><i class="material-icons">delete_forever</i></a></li>
+                                    <li><a href="[% c.uri_for(c.controller('comments').action_for('edit'), [comment.id]) %]" class="btn-floating blue"><i class="material-icons">edit</i></a></li>
+                                </ul>
+                            </div>
+                            [% END; %]
+                        </li>
+                    [% END; %]
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+[% META title = 'Manual Form User Add' -%]
+
+<div class="row">
+    <form action="[% c.uri_for('save') %]" method="post">
+        [% IF user %]
+            <input type="hidden" name="userid" value="[% user.id %]">
+        [% END; %]
+        <h4 class="center red-text">[% action %]</h4>
+        <p class="red-text center">
+            <span class="message">[% status_msg %]</span>
+            <span class="error">[% error_msg %]</span>
+        </p>
+        <div class="input-field col s12 m4 offset-m4">
+            <input name="fname" id="fname" type="text" class="validate" required value="[% user.fname %]">
+            <label for="fname">First Name</label>
+        </div>
+        <div class="input-field col s12 m4 offset-m4">
+            <input name="lname" id="lname" type="text" class="validate" required value="[% user.lname %]">
+            <label for="lname">Last Name</label>
+        </div>
+        <div class="input-field col s12  m4 offset-m4">
+            <input name="email" id="email" type="email" class="validate" required value="[% user.email %]">
+            <label for="email">Email</label>
+        </div>
+        <div class="input-field col s12 m4 offset-m4">
+            <input name="username" id="username" type="text" class="validate" required value="[% user.username %]">
+            <label for="username">Username</label>
+        </div>
+        [% IF user %]
+            <div class="input-field col s12 m4 offset-m4">
+                <input name="oldpassword" id="oldpassword" type="password" class="validate">
+                <label for="oldpassword">Old Password</label>
+            </div>
+        [% END; %]
+        <div class="input-field col s12 m4 offset-m4">
+            <input name="password" id="password" type="password" class="validate">
+            <label for="password">Password</label>
+        </div>
+        <div class="input-field col s12 m4 offset-m4">
+            <input name="rpassword" id="rpassword" type="password" class="validate">
+            <label for="rpassword">Re-password</label>
+        </div>
+        <div class="col s12 m4 offset-m4">
+            <input name="gender" type="radio" id="genderm" value="m" [% IF user.gender == "m" %]checked[% END; %] />
+            <label for="genderm">Male</label>
+            <input name="gender" type="radio" id="genderf" value="f" [% IF user.gender == "f" %]checked[% END; %] />
+            <label for="genderf">Female</label>
+        </div>
+        <div class="input-field col s12 m6 offset-m3 center">
+            <input name="submit" id="submit" type="submit" value="save" class="btn blue">
+        </div>
+    </form>
+</div>

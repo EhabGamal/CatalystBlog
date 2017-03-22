@@ -1,0 +1,20 @@
+[% META title = 'New Post' -%]
+
+<div class="row">
+    <div class="col s12">
+        <div class="card hoverable">
+            <div class="card-content">
+                <form action="[% c.uri_for('save') %]" method="POST">
+                    <input type="hidden" name="postid" value="[% comment.postid.id %]">
+                    <input type="hidden" name="commentid" value="[% comment.id %]">
+                    <div class="input-field">
+                        <textarea name="comment" id="comment" class="materialize-textarea" required>[% comment.comment %]</textarea>
+                        <label for="comment">Comment</label>
+                    </div>
+                    <input type="hidden" name="action" value="post" id="">
+                    <button type="submit" class="btn-floating red"><i class="material-icons">save</i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

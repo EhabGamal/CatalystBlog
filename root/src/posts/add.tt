@@ -1,10 +1,25 @@
-[% META title = 'Manual Form Book Create' -%]
+[% META title = 'New Post' -%]
 
-<form method="post" action="[% c.uri_for('save') %]">
-    <table>
-        <tr><td>UserID:</td><td><input type="number" name="userid"></td></tr>
-        <tr><td>Title:</td><td><input type="text" name="title"></td></tr>
-        <tr><td>Content:</td><td><input type="text" name="content"></td></tr>
-    </table>
-    <button type="submit">Submit</button>
-</form>
+<div class="row">
+    <div class="col s12">
+        <div class="card hoverable">
+            <div class="card-content">
+                <form action="[% c.uri_for('save') %]" method="POST">
+                    [% IF post %]
+                        <input type="hidden" name="postid" value="[% post.id %]">
+                    [% END; %]
+                    <div class="input-field">
+                        <input name="title" id="post-title" type="text" required value="[% post.title %]">
+                        <label for="post-title">Title</label>
+                    </div>
+                    <div class="input-field">
+                        <textarea name="content" id="post-content" class="materialize-textarea" required>[% post.content %]</textarea>
+                        <label for="post-content">Content</label>
+                    </div>
+                    <input type="hidden" name="action" value="post" id="">
+                    <button type="submit" class="btn-floating red"><i class="material-icons">save</i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

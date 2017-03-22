@@ -1,0 +1,30 @@
+[% # This is a TT comment. -%]
+
+[%- # Provide a title -%]
+[% META title = 'Posts List' -%]
+
+[% # Some basic HTML with a loop to display books -%]
+[% # Display each book in a table row %]
+
+<h4 class="center red-text"><i class="material-icons">settings</i> Admin Panel</h4>
+<ul class="collection">
+    [% FOREACH user IN users -%]
+    <li class="collection-item avatar">
+        <img src="[% c.uri_for('/static/images/person0.png') %]" alt="" class="circle">
+        <span class="title">[% user.fname; ' '; user.lname; %] <a href="[% c.uri_for(c.controller('users').action_for('view'), [user.id]) %]">@[% user.username %]</a></span>
+        <p>[% user.email %] <br>
+            Registration Date <span class="red-text">[% user.regdate %]</span>
+        </p>
+        <div class="fixed-action-btn horizontal action-btn">
+            <a class="btn-floating btn-flat">
+                <i class="large material-icons red-text">more_vert</i>
+            </a>
+            <ul>
+                <li><a href="[% c.uri_for(c.controller.action_for('delete'), [user.id]) %]" class="btn-floating red"><i class="material-icons">delete_forever</i></a></li>
+                <li><a href="[% c.uri_for(c.controller.action_for('edit'), [user.id]) %]" class="btn-floating blue"><i class="material-icons">edit</i></a></li>
+                <li><a href="[% c.uri_for(c.controller.action_for('view'), [post.id]) %]" class="btn-floating"><i class="material-icons">visibility</i></a></li>
+            </ul>
+        </div>
+    </li>
+    [% END; %]
+</ul>

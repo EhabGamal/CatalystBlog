@@ -8,20 +8,59 @@
 [% # output (use View Source in browser to see the effect) -%]
 
 [% # Some basic HTML with a loop to display books -%]
-<table border="1">
-    <tr><th>Title</th><th>Content</th><th>Date</th><th>Comments</th><th>action</th></tr>
-    [% # Display each book in a table row %]
-    [% FOREACH post IN posts -%]
-        <tr>
-            <td>[% post.title %]</td>
-            <td>[% post.content %]</td>
-            <td>[% post.edit %]</td>
-            <td>
-                [% comments=[]; comments.push(comment.comment) FOREACH comment = post.comments; comments.join(', ') | html %]
-            </td>
-            <td>
-                <a href="[% c.uri_for(c.controller.action_for('delete'), [post.id]) %]">Delete</a>
-            </td>
-        </tr>
-    [% END -%]
-</table>
+[% # Display each book in a table row %]
+
+<div class="row">
+    <div class="col s12">
+        <div class="card hoverable">
+            <div class="card-content">
+                <form action="[% c.uri_for('save') %]" method="POST">
+                    <div class="input-field">
+                        <input name="title" id="post-title" type="text" required>
+                        <label for="post-title">Title</label>
+                    </div>
+                    <div class="input-field">
+                        <textarea name="content" id="post-content" class="materialize-textarea" required></textarea>
+                        <label for="post-content">Content</label>
+                    </div>
+                    <input type="hidden" name="action" value="post" id="">
+                    <button type="submit" class="btn-floating"><i class="material-icons">add</i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col s12">
+
+    </div>
+</div>
+[% FOREACH post IN posts -%]
+    <div class="card hoverable">
+        <div class="card-content">
+            <div class="row">
+                <div class="col">
+                    <img src="[% c.uri_for('/static/images/person0.png') %]" alt="" class="circle" height="40px">
+                </div>
+                <div class="col">
+                    <a href="[% c.uri_for(c.controller('users').action_for('view'), [post.user.id]) %]">[% post.user.username %]</a><br>
+                    <a href="[% c.uri_for(c.controller.action_for('view'), [post.id]) %]">[% post.edit %]</a>
+                </div>
+            </div>
+            <span class="card-title">[% post.title %]</span>
+            <p calss="truncate">[% post.content %]</p>
+            <p class="right-align">
+                [% IF (c.user.has_role('admin') || post.user.id == c.user.id) %]
+                    <div class="fixed-action-btn horizontal action-btn">
+                        <a class="btn-floating btn-flat">
+                            <i class="material-icons red-text">more_vert</i>
+                        </a>
+                        <ul>
+                            <li><a href="[% c.uri_for(c.controller.action_for('delete'), [post.id]) %]" class="btn-floating red"><i class="material-icons">delete_forever</i></a></li>
+                            <li><a href="[% c.uri_for(c.controller.action_for('edit'), [post.id]) %]" class="btn-floating blue"><i class="material-icons">edit</i></a></li>
+                            <li><a href="[% c.uri_for(c.controller.action_for('view'), [post.id]) %]" class="btn-floating"><i class="material-icons">visibility</i></a></li>
+                        </ul>
+                    </div>
+                [% END; %]
+            </p>
+        </div>
+    </div>
+[% END -%]
