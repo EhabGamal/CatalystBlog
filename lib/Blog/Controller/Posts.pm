@@ -16,81 +16,85 @@ Catalyst Controller.
 
 =cut
 
-
 =head2 index
 
 =cut
 
 sub index :Path :Args(0) {
     my ( $self, $c ) = @_;
+    $c->response->redirect($c->uri_for($self->action_for('list')));
+}
 
-    $c->response->body('Matched Blog::Controller::Posts in Posts.');
+sub error_404 :Chained('base') :Args(0){
+    my ($self, $c) = @_;
+    $c->stash(template => '404.tt');
 }
 
 sub base :Chained('/') :PathPart('posts') :CaptureArgs(0) {
     my ($self, $c) = @_;
-
-    # Store the ResultSet in stash so it's available for other methods
     $c->stash(resultset => $c->model('DB::Post'));
-
-    # Print a message to the debug log
-    $c->log->debug('*** INSIDE BASE METHOD ***');
+    $c->load_status_msgs;
 }
 
-sub list :Local {
-    # Retrieve the usual Perl OO '$self' for this object. $c is the Catalyst
-    # 'Context' that's used to 'glue together' the various components
-    # that make up the application
+sub list :Chained('base') :PathPart('list') :Args(0) {
     my ($self, $c) = @_;
 
-    # Retrieve all of the book records as book model objects and store in the
-    # stash where they can be accessed by the TT template
-    # $c->stash(posts => [$c->model('DB::Post')->all]);
-    $c->stash(posts => [$c->model('DB::Post')->search({},{
+    $c->stash(posts => [$c->model('DB::Post')->search(
+            {},
+            {
                 order_by => 'publish DESC',
                 rows => 5,
-                offset => 0
-            })]);
+                offset => 0,
+                join => 'user'
+            }
+        )]
+    );
 
-    # Set the TT template to use.  You will almost always want to do this
-    # in your action methods (action methods respond to user input in
-    # your controllers).
     $c->stash(template => 'posts/list.tt');
 }
 
 sub add :Chained('base') : PathPart('add') :Args(0){
     my ($self, $c) = @_;
+    $c->stash(action => "Add New Post");
     $c->stash(template => 'posts/add.tt');
 }
 
 sub object :Chained('base') :PathPart('id') :CaptureArgs(1) {
-    # $id = primary key of book to delete
     my ($self, $c, $id) = @_;
 
-    # Find the book object and store it in the stash
-    $c->stash(object => $c->stash->{resultset}->find($id));
-
-    # Make sure the lookup was successful.  You would probably
-    # want to do something like this in a real app:
-    #   $c->detach('/error_404') if !$c->stash->{object};
-    die "Book $id not found!" if !$c->stash->{object};
-
-    # Print a message to the debug log
-    $c->log->debug("*** INSIDE OBJECT METHOD for obj id=$id ***");
+    $c->stash(object => $c->model('DB::Post')->find($id));
+    $c->detach('error_404') if !$c->stash->{object};
 }
 
 sub delete :Chained('object') :PathPart('delete') :Args(0) {
     my ($self, $c) = @_;
 
-    # Use the book object saved by 'object' and delete it along
-    # with related 'book_author' entries
+    # Check permissions
+    $c->detach('/error_noperms')
+        unless ( $c->user->has_role('admin') || $c->stash->{object}->user->id == $c->user->id);
+        #unless $c->stash->{object}->delete_allowed_by($c->user->get_object);
+
+    my $id = $c->stash->{object}->id;
     $c->stash->{object}->delete;
+    # Redirect the user back to the list page
+    $c->response->redirect($c->uri_for($self->action_for('list'),
+        {mid => $c->set_status_msg("Deleted post $id")}));
+}
 
-    # Set a status message to be displayed at the top of the view
-    $c->stash->{status_msg} = "Book deleted.";
+sub view :Chained('object') :PathPart('view') :Args(0) {
+    my ($self, $c) = @_;
 
-    # Forward to the list action/method in this controller
-    $c->response->redirect($c->uri_for($self->action_for('list'),{status_msg => "Book deleted."}));
+    $c->stash(post => $c->stash->{object});
+    $c->stash(template => 'posts/view.tt');
+}
+
+sub edit :Chained('object') :PathPart('edit') :Args(0) {
+    my ($self, $c) = @_;
+    $c->stash(post => $c->stash->{object});
+    $c->detach('/error_noperms')
+        unless ( $c->user->has_role('admin') || $c->stash->{object}->user->id == $c->user->id);
+    $c->stash(action => "Update Post");
+    $c->stash(template => 'posts/add.tt');
 }
 
 sub save :Chained('base') :PathPart('save') :Args(0) {
@@ -98,15 +102,15 @@ sub save :Chained('base') :PathPart('save') :Args(0) {
 
     my $post;
     if( $c->request->params->{postid} ){
-        $post = $c->model('DB::Post')->create({
-            id => $c->request->params->{postid} || 1,
+        $post = $c->model('DB::Post')->find($c->request->params->{postid});
+        $post->update({
             title => $c->request->params->{title},
             content => $c->request->params->{content},
             edit => \'NOW()'
         });
     }else{
         $post = $c->model('DB::Post')->create({
-            userid => $c->request->params->{userid} || 1,
+            userid => $c->user->id,
             title => $c->request->params->{title},
             content => $c->request->params->{content},
             publish => \'NOW()',
@@ -125,25 +129,24 @@ sub save :Chained('base') :PathPart('save') :Args(0) {
 #        publish => \'NOW()',
 #        edit => \'NOW()'
 #    });
-    my @args = keys(@_);
-    $c->stash(post => $post, template => 'posts/done.tt', args => $#args);
+    $c->response->redirect('id/'.$post->id.'/view');
     $c->response->header('Cache-Control' => 'no-cache');
 }
 
-sub update :Chained('base') :PathPart('update') :Args(0) {
+sub comment :Chained('base') :PathPart('comment') :Args(0) {
     my ($self, $c) = @_;
 
-    # Retrieve the values from the form
-
-    my $post = $c->model('DB::Post')->find(25);
-    $post->update({
-        title => 'after update',
-        edit => \'NOW()'
+    $c->model('DB::Comment')->create({
+        postid => $c->request->params->{postid},
+        userid => $c->user->id,
+        comment => $c->request->params->{comment},
+        comment_date => \'NOW()'
     });
-    my @args = keys(@_);
-    $c->stash(post => $post, template => 'posts/done.tt', args => $#args);
+
+    $c->response->redirect('id/'.$c->request->params->{postid}.'/view');
     $c->response->header('Cache-Control' => 'no-cache');
 }
+
 
 =encoding utf8
 
