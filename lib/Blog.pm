@@ -56,7 +56,7 @@ __PACKAGE__->config(
         default => {
             class           => 'SimpleDB',
             user_model      => 'DB::User',
-            password_type   => 'clear',
+            password_type   => 'self_check',
         },
     },
 );
@@ -68,9 +68,13 @@ __PACKAGE__->setup(qw/
     StackTrace
 
     Authentication
+    Authorization::Roles
+
     Session
     Session::Store::File
     Session::State::Cookie
+
+    StatusMessage
 /);
 
 =encoding utf8
