@@ -43,8 +43,8 @@ sub list :Chained('base') :PathPart('list') :Args(0) {
             {},
             {
                 order_by => 'publish DESC',
-                rows => 5,
-                offset => 0,
+                #rows => 5,
+                #offset => 0,
                 join => 'user'
             }
         )]

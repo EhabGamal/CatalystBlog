@@ -6,7 +6,11 @@
 [% # Some basic HTML with a loop to display books -%]
 [% # Display each book in a table row %]
 
-<h4 class="center red-text"><i class="material-icons">settings</i> Admin Panel</h4>
+<div class="row">
+    <h4 class="center red-text"><i class="material-icons">settings</i> Admin Panel
+        <a href="[% c.uri_for(c.controller.action_for('add')) %]" class="btn-floating red"><i class="material-icons">add</i></a>
+    </h4>
+</div>
 <ul class="collection">
     [% FOREACH user IN users -%]
     <li class="collection-item avatar">

@@ -8,7 +8,9 @@
         <h4 class="center red-text">[% action %]</h4>
         <p class="red-text center">
             <span class="message">[% status_msg %]</span>
-            <span class="error">[% error_msg %]</span>
+        </p>
+        <p class="green-text center">
+            <span class="message">[% status_msg %]</span>
         </p>
         <div class="input-field col s12 m4 offset-m4">
             <input name="fname" id="fname" type="text" class="validate" required value="[% user.fname %]">

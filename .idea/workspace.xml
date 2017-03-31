@@ -2,25 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3c736412-dbe6-4554-a23b-ddcf08a8f403" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/root/src/posts/done.tt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/root/src/users/hello.tt" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/root/static/css/main.css" afterPath="$PROJECT_DIR$/root/static/css/custom.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Makefile.PL" afterPath="$PROJECT_DIR$/Makefile.PL" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/Blog.pm" afterPath="$PROJECT_DIR$/lib/Blog.pm" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/Blog/Controller/Posts.pm" afterPath="$PROJECT_DIR$/lib/Blog/Controller/Posts.pm" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/Blog/Controller/Root.pm" afterPath="$PROJECT_DIR$/lib/Blog/Controller/Root.pm" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/Blog/Controller/Users.pm" afterPath="$PROJECT_DIR$/lib/Blog/Controller/Users.pm" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/Blog/Schema/Result/Comment.pm" afterPath="$PROJECT_DIR$/lib/Blog/Schema/Result/Comment.pm" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/Blog/Schema/Result/Post.pm" afterPath="$PROJECT_DIR$/lib/Blog/Schema/Result/Post.pm" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/Blog/Schema/Result/PostTag.pm" afterPath="$PROJECT_DIR$/lib/Blog/Schema/Result/PostTag.pm" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/Blog/Schema/Result/Role.pm" afterPath="$PROJECT_DIR$/lib/Blog/Schema/Result/Role.pm" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/Blog/Schema/Result/Tag.pm" afterPath="$PROJECT_DIR$/lib/Blog/Schema/Result/Tag.pm" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/Blog/Schema/Result/User.pm" afterPath="$PROJECT_DIR$/lib/Blog/Schema/Result/User.pm" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/root/src/posts/add.tt" afterPath="$PROJECT_DIR$/root/src/posts/add.tt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/root/src/posts/list.tt" afterPath="$PROJECT_DIR$/root/src/posts/list.tt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/root/src/wrapper.tt" afterPath="$PROJECT_DIR$/root/src/wrapper.tt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/root/src/users/add.tt" afterPath="$PROJECT_DIR$/root/src/users/add.tt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/root/src/users/list.tt" afterPath="$PROJECT_DIR$/root/src/users/list.tt" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -35,41 +21,21 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Post.pm" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Post.pm" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/Blog/Schema/Result/Post.pm">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="139" column="13" lean-forward="true" selection-start-line="139" selection-start-column="13" selection-end-line="139" selection-end-column="13" />
+            <state relative-caret-position="15">
+              <caret line="139" column="13" lean-forward="false" selection-start-line="139" selection-start-column="13" selection-end-line="139" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="view.tt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/root/src/users/view.tt">
+      <file leaf-file-name="Register.pm" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/Blog/Controller/Register.pm">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="37" column="171" lean-forward="true" selection-start-line="37" selection-start-column="171" selection-end-line="37" selection-end-column="171" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="list.tt" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/root/src/users/list.tt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="list.tt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/root/src/posts/list.tt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="58" column="28" lean-forward="false" selection-start-line="58" selection-start-column="28" selection-end-line="58" selection-end-column="172" />
+            <state relative-caret-position="750">
+              <caret line="51" column="41" lean-forward="false" selection-start-line="51" selection-start-column="41" selection-end-line="51" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -119,22 +85,22 @@
         <option value="$PROJECT_DIR$/lib/Blog/Controller/Login.pm" />
         <option value="$PROJECT_DIR$/lib/Blog/Controller/Root.pm" />
         <option value="$PROJECT_DIR$/root/src/login.tt" />
-        <option value="$PROJECT_DIR$/lib/Blog/Controller/Register.pm" />
         <option value="$PROJECT_DIR$/root/src/posts/add.tt" />
-        <option value="$PROJECT_DIR$/root/src/users/add.tt" />
         <option value="$PROJECT_DIR$/root/src/comments/edit.tt" />
-        <option value="$PROJECT_DIR$/lib/Blog/Controller/Posts.pm" />
         <option value="$PROJECT_DIR$/root/src/error_noperms.tt" />
         <option value="$PROJECT_DIR$/lib/Blog/Schema/Result/Comment.pm" />
         <option value="$PROJECT_DIR$/lib/Blog/Schema/Result/Post.pm" />
         <option value="$PROJECT_DIR$/lib/Blog/Schema/Result/User.pm" />
-        <option value="$PROJECT_DIR$/lib/Blog/Controller/Users.pm" />
         <option value="$PROJECT_DIR$/root/src/register.tt" />
         <option value="$PROJECT_DIR$/root/src/posts/list.tt" />
         <option value="$PROJECT_DIR$/root/src/posts/view.tt" />
         <option value="$PROJECT_DIR$/root/src/wrapper.tt" />
         <option value="$PROJECT_DIR$/root/src/users/view.tt" />
+        <option value="$PROJECT_DIR$/lib/Blog/Controller/Posts.pm" />
         <option value="$PROJECT_DIR$/root/src/users/list.tt" />
+        <option value="$PROJECT_DIR$/lib/Blog/Controller/Register.pm" />
+        <option value="$PROJECT_DIR$/lib/Blog/Controller/Users.pm" />
+        <option value="$PROJECT_DIR$/root/src/users/add.tt" />
       </list>
     </option>
   </component>
@@ -168,6 +134,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -235,111 +202,8 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CatalystBlog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CatalystBlog" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="root" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="posts" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CatalystBlog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CatalystBlog" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CatalystBlog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CatalystBlog" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Blog" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CatalystBlog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CatalystBlog" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Blog" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Schema" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Result" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CatalystBlog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CatalystBlog" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Blog" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Controller" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -466,17 +330,22 @@
       <workItem from="1489960815477" duration="46000" />
       <workItem from="1489994166522" duration="3746000" />
       <workItem from="1490037617661" duration="8331000" />
+      <workItem from="1490241949927" duration="4233000" />
+      <workItem from="1490276833678" duration="172000" />
+      <workItem from="1490426428314" duration="5000" />
+      <workItem from="1490602729660" duration="638000" />
+      <workItem from="1490968575734" duration="76000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="73228000" />
+    <option name="totallyTimeSpent" value="78352000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="52" width="1366" height="677" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.073484845" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18106061" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -650,13 +519,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/root/src/posts/done.tt" />
-    <entry file="file://$PROJECT_DIR$/root/src/users/add.tt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="39" column="83" lean-forward="false" selection-start-line="39" selection-start-column="83" selection-end-line="39" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/root/src/posts/add.tt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
@@ -668,13 +530,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="19" column="6" lean-forward="false" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/Blog/Controller/Register.pm">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="55" column="5" lean-forward="false" selection-start-line="55" selection-start-column="5" selection-end-line="55" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -707,13 +562,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/Blog/Controller/Posts.pm">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="900">
-          <caret line="76" column="4" lean-forward="false" selection-start-line="76" selection-start-column="4" selection-end-line="77" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/Blog/Schema/Result/Role.pm">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="279">
@@ -725,7 +573,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1995">
           <caret line="136" column="69" lean-forward="false" selection-start-line="136" selection-start-column="69" selection-end-line="136" selection-end-column="69" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -733,7 +580,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
           <caret line="198" column="45" lean-forward="true" selection-start-line="198" selection-start-column="45" selection-end-line="198" selection-end-column="45" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -741,15 +587,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="489">
           <caret line="108" column="47" lean-forward="false" selection-start-line="108" selection-start-column="47" selection-end-line="108" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/root/src/register.tt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="44" lean-forward="false" selection-start-line="5" selection-start-column="44" selection-end-line="5" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -757,7 +594,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="17" column="34" lean-forward="false" selection-start-line="17" selection-start-column="34" selection-end-line="17" selection-end-column="90" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -765,51 +601,80 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="76">
           <caret line="46" column="105" lean-forward="false" selection-start-line="46" selection-start-column="105" selection-end-line="46" selection-end-column="105" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/Blog/Controller/Users.pm">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="90" column="32" lean-forward="false" selection-start-line="90" selection-start-column="32" selection-end-line="90" selection-end-column="32" />
-          <folding>
-            <element signature="e#434#470#0#Perl5" expanded="true" />
-            <element signature="e#592#657#0#Perl5" expanded="false" />
-            <element signature="e#717#822#0#Perl5" expanded="false" />
-            <element signature="e#2668#4173#1#Perl5" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/Blog/Schema/Result/Post.pm">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="139" column="13" lean-forward="true" selection-start-line="139" selection-start-column="13" selection-end-line="139" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/root/src/posts/list.tt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
+        <state relative-caret-position="870">
           <caret line="58" column="28" lean-forward="false" selection-start-line="58" selection-start-column="28" selection-end-line="58" selection-end-column="172" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/root/src/users/view.tt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="37" column="171" lean-forward="true" selection-start-line="37" selection-start-column="171" selection-end-line="37" selection-end-column="171" />
+        <state relative-caret-position="61">
+          <caret line="37" column="171" lean-forward="false" selection-start-line="37" selection-start-column="171" selection-end-line="37" selection-end-column="171" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/root/src/register.tt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="38" column="51" lean-forward="false" selection-start-line="38" selection-start-column="41" selection-end-line="38" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/Blog/Controller/Register.pm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="750">
+          <caret line="51" column="41" lean-forward="false" selection-start-line="51" selection-start-column="41" selection-end-line="51" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/root/src/users/add.tt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="44" lean-forward="false" selection-start-line="12" selection-start-column="44" selection-end-line="12" selection-end-column="44" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/root/src/users/list.tt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+        <state relative-caret-position="150">
+          <caret line="10" column="89" lean-forward="false" selection-start-line="10" selection-start-column="89" selection-end-line="10" selection-end-column="89" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/Blog/Controller/Users.pm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="385">
+          <caret line="66" column="0" lean-forward="true" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
+          <folding>
+            <element signature="e#434#470#0#Perl5" expanded="true" />
+            <element signature="e#592#657#0#Perl5" expanded="false" />
+            <element signature="e#717#822#0#Perl5" expanded="false" />
+            <element signature="e#2613#4623#0#Perl5" expanded="false" />
+            <marker date="1490249149494" expanded="false" signature="4062:4506" ph="## comments..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/Blog/Controller/Posts.pm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="46" column="17" lean-forward="false" selection-start-line="46" selection-start-column="17" selection-end-line="46" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/Blog/Schema/Result/Post.pm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="139" column="13" lean-forward="false" selection-start-line="139" selection-start-column="13" selection-end-line="139" selection-end-column="13" />
           <folding />
         </state>
       </provider>
